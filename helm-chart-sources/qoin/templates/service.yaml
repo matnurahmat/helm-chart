@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "qoin.fullname" . }}
+  name: {{ .Values.name }}
   labels:
     {{- include "qoin.labels" . | nindent 4 }}
 spec:

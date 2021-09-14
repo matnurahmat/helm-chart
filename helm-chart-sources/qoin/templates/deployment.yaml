@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "qoin.fullname" . }}
+  name: {{ .Values.name }}
   labels:
     {{- include "qoin.labels" . | nindent 4 }}
 spec:
