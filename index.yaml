@@ -3,12 +3,12 @@ entries:
   qoin:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2021-09-15T05:43:14.700921965+07:00"
+    created: "2021-09-15T06:22:27.467469701+07:00"
     description: A Helm chart for Kubernetes
-    digest: fe4d42091494f8e1610c61c10ac266802f773f4107d6774739ec4d2d7fe491c2
+    digest: 2147e1d7eb97f06d72b0b78551eeec7a2bf2f67ff6559f1e7a78551fbed05d42
     name: qoin
     type: application
     urls:
     - https://matnurahmat.github.io/helm-chart/qoin-0.1.0.tgz
     version: 0.1.0
-generated: "2021-09-15T05:43:14.70001368+07:00"
+generated: "2021-09-15T06:22:27.466323808+07:00"
