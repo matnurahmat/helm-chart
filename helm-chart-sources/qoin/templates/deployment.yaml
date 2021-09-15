@@ -3,14 +3,20 @@ kind: Deployment
 metadata:
   name: {{ .Values.name }}
   labels:
-    {{- include "qoin.labels" . | nindent 4 }}
+    app: {{ .Values.name }}
+    project: {{ .Values.project }}
+    role: {{ .Values.type }}
+    env: {{ .Values.env }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "qoin.selectorLabels" . | nindent 6 }}
+      app: {{ .Values.name }}
+      project: {{ .Values.project }}
+      role: {{ .Values.type }}
+      env: {{ .Values.env }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,7 +24,10 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "qoin.selectorLabels" . | nindent 8 }}
+        app: {{ .Values.name }}
+        project: {{ .Values.project }}
+        role: {{ .Values.type }}
+        env: {{ .Values.env }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -35,7 +44,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: 80
+              containerPort: {{ .Values.port }}
               protocol: TCP
           livenessProbe:
             httpGet:

@@ -2,7 +2,11 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-name: qoin
+name: qoin-be-example-manager
+project: qoin
+type: front
+env: develop
+port: 80
 replicaCount: 1
 
 image:
@@ -17,7 +21,7 @@ fullnameOverride: ""
 
 serviceAccount:
   # Specifies whether a service account should be created
-  create: true
+  create: false
   # Annotations to add to the service account
   annotations: {}
   # The name of the service account to use.
@@ -37,9 +41,7 @@ securityContext: {}
   # runAsNonRoot: true
   # runAsUser: 1000
 
-service:
-  type: ClusterIP
-  port: 80
+servicetype: ClusterIP
 
 ingress:
   enabled: false

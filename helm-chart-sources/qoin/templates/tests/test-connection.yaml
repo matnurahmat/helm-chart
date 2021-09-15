@@ -1,9 +1,12 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: "{{ include "qoin.fullname" . }}-test-connection"
+  name: "{{ .Values.name }}-test-connection"
   labels:
-    {{- include "qoin.labels" . | nindent 4 }}
+    app: {{ .Values.name }}
+    project: {{ .Values.project }}
+    role: {{ .Values.type }}
+    env: {{ .Values.env }}
   annotations:
     "helm.sh/hook": test
 spec:
@@ -11,5 +14,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['{{ include "qoin.fullname" . }}:{{ .Values.service.port }}']
+      args: ['{{ .Values.name }}:{{ .Values.serviceport }}']
   restartPolicy: Never
